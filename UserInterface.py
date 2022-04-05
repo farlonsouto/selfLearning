@@ -2,21 +2,25 @@ import tkinter as tk
 
 
 class UserInterface:
+    """ Abstraction of a simple user interface for learning purposes """
 
-    def __init__(self, root):
-        self.root = root
-        self.make_gui()
+    def __init__(self, guiRoot):
+        """Connects to the next available port.
+        Args:
+            guiRoot: Injects a Tekinter instance.
+        """
+        self.username = tk.StringVar()
+        self.guiRoot = guiRoot
+        self.initGui()
 
     def executeAction(self):
-        print("Action executed")
+        """Prints out the username. """
+        print("The username is {}".format(self.username.get()))
 
-    def make_gui(self):
-        label = tk.Label(self.root, text="Hello There").pack()
-        btn = tk.Button(self.root, text="Action", command=self.executeAction).pack()
+    def initGui(self):
+        """Instantiates the GUI."""
+        tk.Label(self.guiRoot, text="Enter a username:").pack()
+        tk.Entry(self.guiRoot, textvariable=self.username).pack()
+        tk.Button(self.guiRoot, text="Action", command=self.executeAction).pack()
 
 
-root = tk.Tk()
-gui = UserInterface(root)
-root.title("Streaming App")
-root.geometry("640x480")
-root.mainloop()
