@@ -7,6 +7,6 @@ class Customer:
         self.eMail = eMail
         self.address = address
 
-    def toString(self):
+    def __str__(self):
         """ Provides with a string describing the values set to the fields of a particular instance of this class """
         print("Name: {} Phone: {} Address: {}".format(self.name, self.phoneNumber, self.address))

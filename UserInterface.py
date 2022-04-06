@@ -22,5 +22,3 @@ class UserInterface:
         tk.Label(self.guiRoot, text="Enter a username:").pack()
         tk.Entry(self.guiRoot, textvariable=self.username).pack()
         tk.Button(self.guiRoot, text="Action", command=self.executeAction).pack()
-
-
