@@ -26,7 +26,27 @@ class Problem:
                 n = p + n + 1
         return count
 
+    @classmethod
+    def harmonicSeries(cls, limit) -> str:
+        """ Implements the harmonic series sum up to the limit given as input and prints the terms of the sum.
+            Args:
+                limit: an integer value grater than zero.
+            Returns:
+                The String representation of the sum of the harmonic series, up to the informed limit of steps, with
+                float precision """
+        result = 0.0
+        terms = []
+        for i in range(limit):
+            terms.append("1/" + str(i + 1))
+            result += 1 / (i + 1)  # because i starts in 0, we have to be careful here
+        terms_sum_str = " + ".join(terms)
+        return str(result) + " = " + terms_sum_str
+
 
 # Executing some tests
+
 number = int(input("Give an input to the Collatz function: "))
 print("The number {} took {} steps to converge to one".format(number, Problem.collatz(number)))
+
+steps = int(input("Give a limit to the Harmonic Series function: "))
+print("The harmonic series sum up with {} steps is: {}".format(steps, Problem.harmonicSeries(steps)))
