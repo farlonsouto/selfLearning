@@ -2,9 +2,6 @@ class Problem:
     """ This class encapsulates some interesting implementations with focus on: very simple - but hard to prove -
     mathematical problems and well known (classic) solutions for didactic problems """
 
-    def __init__(self):
-        pass
-
     @classmethod
     def collatz(cls, n) -> int:
         """ The hypothesis formulated In 1937 by the German mathematician Lothar Collatz: If the number is even,
@@ -28,7 +25,8 @@ class Problem:
 
     @classmethod
     def harmonicSeries(cls, limit) -> str:
-        """ Implements the harmonic series sum up to the limit given as input and prints the terms of the sum.
+        """ Implements the harmonic series sum up to the limit (number of terms) given as input and prints the terms of
+        the sum.
             Args:
                 limit: an integer value grater than zero.
             Returns:
@@ -42,6 +40,21 @@ class Problem:
         terms_sum_str = " + ".join(terms)
         return str(result) + " = " + terms_sum_str
 
+    @classmethod
+    def bubbleSort(cls, data):
+        """ Implements the simplest Bubble Sort mankind has ever seen to sort the elements of a list.
+            Args:
+                data: The original input data, a list of comparable items.
+            Returns:
+                The input list with its content in ascending sorting order. """
+        pivoted = True
+        while pivoted:
+            pivoted = False
+            for i in range(len(data) - 1):
+                if data[i] > data[i + 1]:
+                    data[i], data[i + 1] = data[i + 1], data[i]
+                    pivoted = True
+
 
 # Executing some tests
 
@@ -50,3 +63,16 @@ print("The number {} took {} steps to converge to one".format(number, Problem.co
 
 steps = int(input("Give a limit to the Harmonic Series function: "))
 print("The harmonic series sum up with {} steps is: {}".format(steps, Problem.harmonicSeries(steps)))
+
+listOfNumbers = []
+value = ""
+print("Provide integer input values to build a list so we can sort it. Enter 'x' to finish.")
+while True:
+    value = input("Add a value to the list: ")
+    if value == "x":
+        break
+    else:
+        listOfNumbers.append(int(value))
+Problem.bubbleSort(listOfNumbers)
+print(listOfNumbers)
+
