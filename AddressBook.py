@@ -6,7 +6,9 @@ class AddressBook:
 
     def __init__(self, gui):
         """ Creates a new AddressBook and creates a file named addressBook.csv
-            if one does not exist yet"""
+            if one does not exist yet
+            Args:
+                gui: an instance of Tk"""
         with open("addressBook.csv", "a") as file:
             file.close()
         self.createGui(gui)

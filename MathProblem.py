@@ -1,4 +1,4 @@
-class Problem:
+class MathProblem:
     """ This class encapsulates some interesting implementations with focus on: very simple - but hard to prove -
     mathematical problems and well known (classic) solutions for didactic problems """
 
@@ -46,7 +46,11 @@ class Problem:
             Args:
                 data: The original input data, a list of comparable items.
             Returns:
-                The input list with its content in ascending sorting order. """
+                The input list with its content in ascending sorting order.
+            Raise:
+                ValueError if the input list is None."""
+        if data is None:
+            raise ValueError("The input list cannot be None.")
         pivoted = True
         while pivoted:
             pivoted = False
@@ -54,25 +58,3 @@ class Problem:
                 if data[i] > data[i + 1]:
                     data[i], data[i + 1] = data[i + 1], data[i]
                     pivoted = True
-
-
-# Executing some tests
-
-number = int(input("Give an input to the Collatz function: "))
-print("The number {} took {} steps to converge to one".format(number, Problem.collatz(number)))
-
-steps = int(input("Give a limit to the Harmonic Series function: "))
-print("The harmonic series sum up with {} steps is: {}".format(steps, Problem.harmonicSeries(steps)))
-
-listOfNumbers = []
-value = ""
-print("Provide integer input values to build a list so we can sort it. Enter 'x' to finish.")
-while True:
-    value = input("Add a value to the list: ")
-    if value == "x":
-        break
-    else:
-        listOfNumbers.append(int(value))
-Problem.bubbleSort(listOfNumbers)
-print(listOfNumbers)
-
