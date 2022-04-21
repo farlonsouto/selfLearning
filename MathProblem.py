@@ -15,11 +15,9 @@ class MathProblem:
         while n != 1:
             count = count + 1
             if n % 2 == 0:
-                # fast division by 2 with binary shift right
-                n = n >> 1
+                n = n >> 1  # fast division by 2 with binary shift right
             else:
-                # using shift left to multiply (by two)
-                p = n << 1
+                p = n << 1  # using shift left to multiply (by two)
                 n = p + n + 1
         return count
 
